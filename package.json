@@ -5,13 +5,21 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "up:broker": "docker-compose -f manifests/local/docker-compose.yaml up --build -d rabbitmq",
+    "up:redis": "docker-compose -f manifests/local/docker-compose.yaml up --build -d redis"
   },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/microservices": "^9.1.4",
     "@nestjs/platform-express": "^9.0.0",
+    "@types/redis": "^2.8.32",
+    "amqp-connection-manager": "^4.1.7",
+    "amqplib": "^0.10.3",
+    "aws-sdk": "^2.1231.0",
+    "redis": "^3.1.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
     "tslib": "^2.3.0"

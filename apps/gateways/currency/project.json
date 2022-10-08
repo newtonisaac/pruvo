@@ -1,0 +1,60 @@
+{
+  "name": "gateways-currency",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/gateways/currency/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/gateways/currency",
+        "main": "apps/gateways/currency/src/main.ts",
+        "tsConfig": "apps/gateways/currency/tsconfig.app.json",
+        "assets": ["apps/gateways/currency/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/gateways/currency/src/environments/environment.ts",
+              "with": "apps/gateways/currency/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "gateways-currency:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "gateways-currency:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/gateways/currency/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/gateways/currency"],
+      "options": {
+        "jestConfig": "apps/gateways/currency/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

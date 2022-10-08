@@ -18,7 +18,7 @@
       "@pruvo-monorepo/integrations/openexchange": [
         "libs/integrations/openexchange/src/index.ts"
       ],
-      "@pruvo-monorepo/utils/sqs": ["libs/utils/sqs/src/index.ts"]
+      "@pruvo-monorepo/utils/redis": ["libs/utils/redis/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

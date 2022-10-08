@@ -1,1 +1,2 @@
-export * from './lib/integrations-openexchange.module';
+export * from './lib/openexchnage.client';
+export * from './lib/types';
