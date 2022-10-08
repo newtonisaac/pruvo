@@ -1,0 +1,60 @@
+{
+  "name": "queue-currency-conversion",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/queue/currency-conversion/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/queue/currency-conversion",
+        "main": "apps/queue/currency-conversion/src/main.ts",
+        "tsConfig": "apps/queue/currency-conversion/tsconfig.app.json",
+        "assets": ["apps/queue/currency-conversion/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/queue/currency-conversion/src/environments/environment.ts",
+              "with": "apps/queue/currency-conversion/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "queue-currency-conversion:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "queue-currency-conversion:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/queue/currency-conversion/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/queue/currency-conversion"],
+      "options": {
+        "jestConfig": "apps/queue/currency-conversion/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
