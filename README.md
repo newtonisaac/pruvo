@@ -7,10 +7,10 @@ This project was generated using [Nx](https://nx.dev).
 
 # Project dependencies
 
-node > 14
+node 14, 
 docker + docker compose
 
-## Hot to execute
+## How to execute
 ```
 
 npm i
